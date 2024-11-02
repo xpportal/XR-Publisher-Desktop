@@ -1,0 +1,27 @@
+{
+	"name": "xr-publisher-native",
+	"main": "main.js",
+	"scripts": {
+		"dev": "NODE_ENV=development concurrently \"vite\" \"electron .\"",
+		"build": "vite build"
+	},
+	"dependencies": {
+		"acorn": "^8.14.0",
+		"codemirror": "^5.65.2",
+		"esprima": "^4.0.1",
+		"jsonlint": "^1.6.3",
+		"signals": "^1.0.0",
+		"ternjs": "^0.22.0",
+		"three": "^0.161.0",
+		"three-gpu-pathtracer": "^0.0.23",
+		"troika-three-text": "^0.50.3"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.20",
+		"concurrently": "^9.0.1",
+		"electron": "^29.4.6",
+		"postcss": "^8.4.47",
+		"tailwindcss": "^3.4.14",
+		"vite": "^5.4.10"
+	}
+}
