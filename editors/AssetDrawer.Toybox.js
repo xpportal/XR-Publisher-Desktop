@@ -309,7 +309,40 @@ function AssetDrawerToybox(editor) {
 	
 		} catch (error) {
 			console.error('Error fetching assets:', error);
-			 && 
+			
+			// If it's an authentication error, clear the token
+			if (error.message.includes('401')) {
+				localStorage.removeItem('toybox_api_key');
+				statusSpan.dom.className = 'text-red-500';
+				statusSpan.setTextContent('○ Not Connected');
+			}
+		}
+	}
+	
+
+    function clearAssets() {
+        assets = [];
+        while (gridContainer.dom.firstChild) {
+            gridContainer.dom.removeChild(gridContainer.dom.firstChild);
+        }
+    }
+
+	function updateAssetsGrid() {
+		// Clear existing content
+		while (gridContainer.dom.firstChild) {
+			gridContainer.dom.removeChild(gridContainer.dom.firstChild);
+		}
+	
+		console.log('Updating grid with assets:', assets);  // Debug log
+	
+		assets.forEach(asset => {
+			console.log("asset", asset);
+			const item = new UIPanel();
+			item.dom.className = 'asset-card-container mb-8';
+		
+			// Set background gradient
+			let backgroundStyle;
+			if (asset.background && 
 				JSON.parse(asset.background).backgroundColor && 
 				JSON.parse(asset.background).backgroundColor2) {
 				const bg = JSON.parse(asset.background);
@@ -318,39 +351,6 @@ function AssetDrawerToybox(editor) {
 					box-shadow: 0 0 10px 2px ${bg.backgroundColor}1a;
 					background-image: linear-gradient(45deg, ${bg.backgroundColor} 0%, ${bg.backgroundColor2} 100%);
 				`;
-			} else {
-				const [color1, color2] = returnRandomGradient();
-				backgroundStyle = `
-					background-image: linear-gradient(45deg, ${color1} 0%, ${color2} 100%);
-				`;
-			}
-		
-			item.dom.style.cssText = `
-				${backgroundStyle}
-				padding: 1rem;
-				border-radius: 1.5rem;
-				cursor: pointer;
-				text-align: center;
-				position: relative;
-				max-width: 200px;
-				margin: 0 auto 2rem auto;
-				transition: transform 0.2s ease-in-out;
-			`;
-		
-			item.dom.addEventListener('mouseenter', () => {
-				item.dom.style.transform = 'translateY(-2px)';
-			});
-		
-			item.dom.addEventListener('mouseleave', () => {
-				item.dom.style.transform = 'translateY(0)';
-			});
-		
-			const header = new UIPanel();
-			header.dom.className = 'bg-[#222222] rounded-t-lg h-7 w-11/12 pb-2 pt-0 pl-3 text-sm font-bold mb-0 mx-auto text-white text-left';
-			const nameWithoutExt = asset.filename.split('.').slice(0, -1).join('.');
-			const extension = asset.filename.split('.').pop();
-			header.dom.innerHTML = `
-				<span class="block truncate">${nameWithoutExt}<span class="text-xs text-slime-400 ml-
 			} else {
 				const [color1, color2] = returnRandomGradient();
 				backgroundStyle = `

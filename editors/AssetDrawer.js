@@ -74,12 +74,12 @@ function AssetDrawer(editor) {
     container.setBottom('0px');
     container.setWidth('100%');
 	// container.dom.style.minHeight = '200px';
-	// container.setHeight('400px');
+	container.setHeight('450px');
     container.setDisplay('block');
     container.setBackground('#1b1b1b');
     container.setBorderTop('1px solid #333');
 
-    // Sections for different asset types
+    // Create sections for different asset types
     const models = new UISpan().add(
         new AssetDrawerToybox(editor)
     );
