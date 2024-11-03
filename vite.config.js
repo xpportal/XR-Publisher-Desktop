@@ -28,7 +28,6 @@ export default defineConfig({
 
       // Editor paths
       '/editors': resolve(__dirname, 'editors'),
-      '/css': resolve(__dirname, 'editors/css'),
       '/libs': resolve(__dirname, 'editors/libs'),
       '/commands': resolve(__dirname, 'editors/commands')
     }

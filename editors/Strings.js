@@ -68,6 +68,7 @@ function Strings( config ) {
 
 			'menubar/add': 'Add',
 			'menubar/add/group': 'Group',
+			'menubar/add/model': 'Model',
 
 			// XR Publisher Blocks
 			'menubar/add/spawnpoint': 'Spawn Point',

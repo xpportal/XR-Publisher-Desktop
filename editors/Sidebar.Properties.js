@@ -38,7 +38,8 @@ function SidebarProperties( editor ) {
 	function toggleTabs( object ) {
 
 		const xrPublisherComponents = [
-			'spawnpoint'
+			'spawnpoint',
+			'model'
 		];
 		// set a status based on if the current object.userData.type is in the xrPublisherComponents array
 		const xrPublisherStatus = object && object.userData && object.userData.type && xrPublisherComponents.includes( object.userData.type );

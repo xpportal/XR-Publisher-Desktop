@@ -8,6 +8,8 @@ import { Sidebar } from './editors/Sidebar.js';
 import { AssetDrawer } from './editors/AssetDrawer.js';
 import { Menubar } from './editors/Menubar.js';
 import { Resizer } from './editors/Resizer.js';
+import { ModelObject } from './editors/ModelObject.js';
+import { AddModelCommand } from './editors/commands/ModelCommand.js';
 import signals from 'signals';
 import './editors/libs/ui.js';
 import './editors/libs/ui.three.js';
@@ -110,10 +112,29 @@ document.addEventListener('dragover', event => {
 document.addEventListener('drop', event => {
 	event.preventDefault();
 	console.log(event.dataTransfer.types);
-	if (event.dataTransfer.types.includes('asset/url')) {
+	if (event.dataTransfer.types.includes('asset/url') &&
+		event.dataTransfer.getData('asset/type') === 'model') {
+
 		const url = event.dataTransfer.getData('asset/url');
-		const assetType = event.dataTransfer.getData('asset/type');
-		editor.loader.loadFromUrl(url, assetType);
+		const model = new ModelObject(editor, url);
+
+		// Calculate drop position based on mouse coordinates
+		const rect = viewport.dom.getBoundingClientRect();
+		const x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+		const y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+		// Raycast to find drop position in 3D space
+		const raycaster = new THREE.Raycaster();
+		raycaster.setFromCamera({ x, y }, editor.camera);
+		const intersects = raycaster.intersectObjects(editor.scene.children, true);
+
+		if (intersects.length > 0) {
+			const point = intersects[0].point;
+			model.position.copy(point);
+		}
+
+		// Add the model to the scene via command
+		editor.execute(new AddModelCommand(editor, model));
 	} else if (event.dataTransfer.types.includes('text/uri-list')) {
 		const url = event.dataTransfer.getData('text/uri-list');
 		editor.loader.loadFromUrl(url);

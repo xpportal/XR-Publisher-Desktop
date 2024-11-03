@@ -5,6 +5,7 @@ import { UIPanel, UIRow, UIText, UIInput, UINumber, UIColor, UICheckbox, UIButto
 import { Text } from 'troika-three-text';
 
 import { AddObjectCommand } from './commands/AddObjectCommand.js';
+import { ModelObject } from './ModelObject.js';
 import { AddXrPublisherCommand } from './commands/AddXrPublisherCommand.js';
 
 function MenubarAddSpawnPoint(editor) {
@@ -35,6 +36,37 @@ function MenubarAddSpawnPoint(editor) {
 
     return option;
 }
+
+function MenubarAddModel(editor) {
+	const option = new UIRow();
+	option.setClass('option');
+	option.setTextContent(editor.strings.getKey('menubar/add/model') || 'Model');
+	option.onClick(function() {
+		const model = new ModelObject();
+		model.name = 'Model';
+		model.userData.type = 'model';
+		model.userData.properties = {
+			url: '',
+			positionX: 0,
+			positionY: 0,
+			positionZ: 0,
+			rotationX: 0,
+			rotationY: 0,
+			rotationZ: 0,
+			scaleX: 1,
+			scaleY: 1,
+			scaleZ: 1,
+			collidable: false,
+			alt: ''
+		};
+
+		editor.execute(new AddObjectCommand(editor, model));
+	});
+
+	return option;
+}
+
+
 
 function MenubarAddText(editor) {
     const option = new UIRow();
@@ -105,6 +137,9 @@ function MenubarAdd( editor ) {
 
 	// Text
 	options.add(MenubarAddText(editor));
+	
+	// Model
+	options.add(MenubarAddModel(editor));
 
 	// Group
 
