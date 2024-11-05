@@ -4,52 +4,36 @@
     <title>XR Publisher Editor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="editors/css/main.css">
-	<!-- <link rel="stylesheet" href="/styles/main.css"> -->
-  </head>
-  <body>
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "/node_modules/three/build/three.module.js",
-          "three/addons/": "/node_modules/three/examples/jsm/",
-          "three/examples/": "/node_modules/three/examples/"
-        }
-      }
-    </script>
-
-    <!-- Base CodeMirror -->
-    <script src="editors/libs/codemirror/codemirror.js"></script>
-    <script src="editors/libs/codemirror/mode/javascript.js"></script>
-    <script src="editors/libs/codemirror/mode/glsl.js"></script>
+    
+    <!-- Editor Dependencies -->
+    <script src="/src/editors/libs/codemirror/codemirror.js"></script>
+    <script src="/src/editors/libs/codemirror/mode/javascript.js"></script>
+    <script src="/src/editors/libs/codemirror/mode/glsl.js"></script>
 
     <!-- Tern Dependencies -->
-    <script src="editors/libs/acorn/acorn.js"></script>
-    <script src="editors/libs/acorn/acorn_loose.js"></script>
-    <script src="editors/libs/acorn/walk.js"></script>
-    <script src="editors/libs/ternjs/polyfill.js"></script>
-    <script src="editors/libs/ternjs/signal.js"></script>
-    <script src="editors/libs/ternjs/tern.js"></script>
-    <script src="editors/libs/ternjs/def.js"></script>
-    <script src="editors/libs/ternjs/comment.js"></script>
-    <script src="editors/libs/ternjs/infer.js"></script>
-    <script src="editors/libs/ternjs/doc_comment.js"></script>
-    <script src="editors/libs/tern-threejs/threejs.js"></script>
+    <script src="/src/editors/libs/acorn/acorn.js"></script>
+    <script src="/src/editors/libs/acorn/acorn_loose.js"></script>
+    <script src="/src/editors/libs/acorn/walk.js"></script>
+    <script src="/src/editors/libs/ternjs/polyfill.js"></script>
+    <script src="/src/editors/libs/ternjs/signal.js"></script>
+    <script src="/src/editors/libs/ternjs/tern.js"></script>
+    <script src="/src/editors/libs/ternjs/def.js"></script>
+    <script src="/src/editors/libs/ternjs/comment.js"></script>
+    <script src="/src/editors/libs/ternjs/infer.js"></script>
+    <script src="/src/editors/libs/ternjs/doc_comment.js"></script>
+    <script src="/src/editors/libs/tern-threejs/threejs.js"></script>
 
     <!-- CodeMirror Addons -->
-    <script src="editors/libs/codemirror/addon/dialog.js"></script>
-    <script src="editors/libs/codemirror/addon/show-hint.js"></script>
-    <script src="editors/libs/codemirror/addon/tern.js"></script>
+    <script src="/src/editors/libs/codemirror/addon/dialog.js"></script>
+    <script src="/src/editors/libs/codemirror/addon/show-hint.js"></script>
+    <script src="/src/editors/libs/codemirror/addon/tern.js"></script>
 
     <!-- Other Dependencies -->
-    <script src="editors/libs/esprima.js"></script>
-    <script src="editors/libs/jsonlint.js"></script>
-
-    <!-- UI Libraries -->
-    <script type="module" src="editors/libs/ui.js"></script>
-    <script type="module" src="editors/libs/ui.three.js"></script>
-
-    <!-- Renderer -->
-    <script type="module" src="renderer.js"></script>
+    <script src="/src/editors/libs/esprima.js"></script>
+    <script src="/src/editors/libs/jsonlint.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/app.jsx"></script>
   </body>
 </html>

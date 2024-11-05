@@ -1,0 +1,14 @@
+{
+  "name": "rusted-gltf-transform",
+  "version": "0.1.0",
+  "files": [
+    "rusted_gltf_transform_bg.wasm",
+    "rusted_gltf_transform.js",
+    "rusted_gltf_transform.d.ts"
+  ],
+  "module": "rusted_gltf_transform.js",
+  "types": "rusted_gltf_transform.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
