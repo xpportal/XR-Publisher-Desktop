@@ -56,8 +56,10 @@ function AssetDrawerToybox(editor) {
 				search: '',
 				categories: '',
 				limit: '1',
-				offset: '0'
+				offset: '0',
+				// add the key to the URL to test connection
 			});
+
 			const url = `https://cfdb.sxpdigital.workers.dev/assets-by-key?${params.toString()}`;
 			console.log('Fetching URL:', url);
 	
