@@ -6,6 +6,7 @@ import { BrowseView } from './views/BrowseView';
 import { ManageView } from './views/ManageView';
 import { ToyboxView } from './views/ToyboxView';
 import { ProfileView } from './views/ProfileView';
+import { CharacterManagerView } from './views/CharacterManagerView';
 import XRPublisherKeyModal from './XRPublisherKeyModal'; // Add this import
 
 import logo from '../../public/images/xrpublisher-logo-2048x475.png';
@@ -46,7 +47,8 @@ const AppLayout = () => {
     { id: 'create', label: 'Create' },
     { id: 'manage', label: 'Manage' },
     { id: 'toybox', label: 'Toybox' },
-	{ id: 'profile', label: 'Profile' }
+    { id: 'characters', label: 'Characters' },
+	  { id: 'profile', label: 'Profile' }
   ];
 
   useEffect(() => {
@@ -73,6 +75,8 @@ const AppLayout = () => {
         return <ToyboxView />;
 	  case 'profile':
 		return <ProfileView />;
+    case 'characters':
+      return <CharacterManagerView />;
       default:
         return null;
     }
