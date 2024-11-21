@@ -37,7 +37,7 @@ export const CharacterForm = ({ character, onChange, onSubmit }) => {
   };
 
   const createInputProps = (field, handler, isArray = false) => ({
-    className: "w-full bg-gray-800 text-white p-2 rounded",
+    className: "w-full bg-gray-800 text-white text-sm p-2 rounded",
     value: isArray 
       ? (Array.isArray(character[field]) ? character[field].join('\n') : '')
       : (character[field] || ''),
@@ -47,7 +47,7 @@ export const CharacterForm = ({ character, onChange, onSubmit }) => {
   });
 
   const createStyleInputProps = (styleType) => ({
-    className: "w-full bg-gray-800 text-white p-2 rounded",
+    className: "w-full bg-gray-800 text-white text-sm p-2 rounded",
     value: Array.isArray(character.style?.[styleType]) 
       ? character.style[styleType].join('\n') 
       : '',
@@ -59,24 +59,26 @@ export const CharacterForm = ({ character, onChange, onSubmit }) => {
   return (
     <div className="space-y-6">
       <div>
-        <label className="block text-white mb-2">Name</label>
+        <label className="block text-white text-sm mb-2">Name</label>
         <input
           type="text"
+		  
           {...createInputProps('name', handleTextInput)}
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Description</label>
+        <label className="block text-white text-sm mb-2">Description</label>
         <textarea
-          {...createInputProps('description', handleTextInput)}
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+  {...createInputProps('description', handleTextInput)}
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Model Provider</label>
+        <label className="block text-white text-sm mb-2">Model Provider</label>
         <select
-          className="w-full bg-gray-800 text-white p-2 rounded"
+          className="w-full bg-gray-800 text-white text-sm p-2 rounded"
           value={character.modelProvider || 'LLAMALOCAL'}
           onChange={(e) => handleTextInput('modelProvider', e.target.value)}
         >
@@ -87,67 +89,83 @@ export const CharacterForm = ({ character, onChange, onSubmit }) => {
       </div>
 
       <div>
-        <label className="block text-white mb-2">Bio (one per line)</label>
+        <label className="block text-white text-sm mb-2">Bio (one per line)</label>
         <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
           {...createInputProps('bio', handleArrayInput, true)}
           placeholder="Enter each bio line on a new line"
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Lore (one per line)</label>
+        <label className="block text-white text-sm mb-2">Lore (one per line)</label>
         <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
           {...createInputProps('lore', handleArrayInput, true)}
           placeholder="Enter each lore line on a new line"
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Knowledge (one per line)</label>
+        <label className="block text-white text-sm mb-2">Knowledge (one per line)</label>
         <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
           {...createInputProps('knowledge', handleArrayInput, true)}
           placeholder="Enter each knowledge item on a new line"
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Topics (one per line)</label>
+        <label className="block text-white text-sm mb-2">Topics (one per line)</label>
         <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
           {...createInputProps('topics', handleArrayInput, true)}
           placeholder="Enter each topic on a new line"
         />
       </div>
 
       <div>
-        <label className="block text-white mb-2">Adjectives (one per line)</label>
+        <label className="block text-white text-sm mb-2">Adjectives (one per line)</label>
         <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
           {...createInputProps('adjectives', handleArrayInput, true)}
           placeholder="Enter each adjective on a new line"
         />
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-white text-lg font-semibold">Style Guidelines</h3>
+        <h3 className="text-white text-sm text-lg font-semibold">Style Guidelines</h3>
         
         <div>
-          <label className="block text-white mb-2">General Style (one per line)</label>
+          <label className="block text-white text-sm mb-2">General Style (one per line)</label>
           <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
             {...createStyleInputProps('all')}
             placeholder="Enter each general style guideline on a new line"
           />
         </div>
 
         <div>
-          <label className="block text-white mb-2">Chat Style (one per line)</label>
+          <label className="block text-white text-sm mb-2">Chat Style (one per line)</label>
           <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
             {...createStyleInputProps('chat')}
             placeholder="Enter each chat style guideline on a new line"
           />
         </div>
 
         <div>
-          <label className="block text-white mb-2">Post Style (one per line)</label>
+          <label className="block text-white text-sm mb-2">Post Style (one per line)</label>
           <textarea
+  style={{ fontSize: '0.675rem' }} // This sets the font size to small (14px)
+
             {...createStyleInputProps('post')}
             placeholder="Enter each post style guideline on a new line"
           />

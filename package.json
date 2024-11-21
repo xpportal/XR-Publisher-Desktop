@@ -8,8 +8,7 @@
 		"rebuild-sqlite3": "electron-rebuild -f -w better-sqlite3",
 		"electron:dev": "wait-on tcp:5173 && cross-env NODE_ENV=development electron .",
 		"start": "concurrently -k \"pnpm run dev\" \"pnpm run electron:dev\"",
-		"electron:build": "electron-builder",
-		"postinstall": "electron-rebuild -f -w better-sqlite3"
+		"electron:build": "electron-builder"
 	},
 	"dependencies": {
 		"@ai16z/adapter-sqlite": "0.1.3-alpha.2",
