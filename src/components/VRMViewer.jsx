@@ -197,6 +197,8 @@ async function loadMixamoAnimation(url, vrm) {
 		const camera = new THREE.PerspectiveCamera(30.0, canvas.clientWidth / canvas.clientHeight, 0.1, 20.0);
 		cameraRef.current = camera;
 		camera.position.set(0.0, 0.1, 3.5);
+		// zoom in a bit
+		camera.zoom = 1.1;
 		
 		// Add lights
 		scene.add(new THREE.AmbientLight(0xffffff, 0.8));
@@ -263,7 +265,7 @@ async function loadMixamoAnimation(url, vrm) {
 
 		  // Add smile expression
 		  if (vrm.expressionManager) {
-			vrm.expressionManager.setValue('happy', 0.6); // Adjust value between 0-1 for intensity
+			vrm.expressionManager.setValue('happy', 0.6);
 		  }
 		
 		

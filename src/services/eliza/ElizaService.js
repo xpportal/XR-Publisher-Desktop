@@ -42,7 +42,7 @@ export class ElizaService {
           embedModel: "mxbai-embed-large"
         }
       };
-  
+	  console.log('Eliza config,', config);
       try {
         const success = await window.electron.eliza.start(config);
         if (!success) {

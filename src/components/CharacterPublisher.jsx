@@ -26,34 +26,34 @@ export class CharacterPublisher {
         ? '/update-character'  // Update existing character
         : '/upload-character'; // Create new character
 
-      const response = await fetch(`${this.workerUrl}${endpoint}`, {
-        ...fetchOptions,
-        body: JSON.stringify({
-          userId: username,
-          character: {
-            name: character.name,
-            modelProvider: character.modelProvider || 'LLAMALOCAL',
-            clients: character.clients || ['DIRECT'],
-            bio: character.bio,
-            vrmUrl: character.vrmUrl,  // Include VRM URL
-            lore: character.lore || [],
-            messageExamples: character.messageExamples || [],
-            postExamples: character.postExamples || [],
-            topics: character.topics || [],
-            style: character.style || {
-              all: [],
-              chat: [],
-              post: []
-            },
-            adjectives: character.adjectives || [],
-            settings: character.settings || {
-              model: 'claude-3-opus-20240229',
-              voice: { model: 'en-US-neural' }
-            }
-          }
-        })
-      });
-
+		const response = await fetch(`${this.workerUrl}${endpoint}`, {
+			...fetchOptions,
+			body: JSON.stringify({
+			  userId: username,
+			  character: {
+				name: character.name,
+				modelProvider: character.modelProvider || 'LLAMALOCAL',
+				clients: character.clients || ['DIRECT'],
+				bio: character.bio,
+				vrmUrl: character.vrmUrl,
+				lore: character.lore || [],
+				messageExamples: character.messageExamples || [],
+				postExamples: character.postExamples || [],
+				topics: character.topics || [],
+				style: character.style || {
+				  all: [],
+				  chat: [],
+				  post: []
+				},
+				adjectives: character.adjectives || [],
+				settings: {
+				  ...character.settings,
+				  secrets: character.settings?.secrets || undefined
+				}
+			  }
+			})
+		  });
+	  
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message || 'Failed to publish character');
